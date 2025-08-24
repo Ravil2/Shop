@@ -1,6 +1,6 @@
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from '../ProductCard/ProductCard'
 
-export default function Recomented() {
+export default function Recomented({ products }) {
   return (
     <section className="mb-16">
       <div className="flex items-center justify-between mb-8">
@@ -11,7 +11,7 @@ export default function Recomented() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featuredProducts.map((product) => (
+        {products.slice(0, 8).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
