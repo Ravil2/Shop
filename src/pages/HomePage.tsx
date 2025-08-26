@@ -1,4 +1,4 @@
-import Categories from '@/components/Categories/Categories'
+import Advantages from '@/components/Advantages/Advantages'
 import { HeroCarousel } from '@/components/HeroCarousel/HeroCarousel'
 import PopularCategory from '@/components/PopularCategory/PopularCategory'
 import Recomented from '@/components/Recomented/Recomented'
@@ -27,6 +27,7 @@ export default function HomePage() {
         <HeroCarousel />
         <PopularCategory categories={categories} />
         <Recomented products={products} />
+        <Advantages />
       </div>
     </div>
   )

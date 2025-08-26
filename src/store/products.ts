@@ -111,7 +111,19 @@ export const loadCategories = () => async (dispatch: Dispatch) => {
       throw new Error('Не удалось загрузить категории')
     }
     const data = await response.json()
-    dispatch(categoriesReceived(data))
+    const categoriFiltered = data.filter((categ: any) => {
+      const invalidNames = ['string', 'category_B', 'product']
+      const isOnlyNumbers = /^\d+$/.test(categ.name)
+
+      return (
+        categ.image &&
+        !categ.image.includes('pravatar') &&
+        !categ.image.includes('placeimg') &&
+        !invalidNames.includes(categ.name.toLowerCase()) &&
+        !isOnlyNumbers
+      )
+    })
+    dispatch(categoriesReceived(categoriFiltered))
   } catch (error) {
     dispatch(
       productsFailed(

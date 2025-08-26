@@ -1,9 +1,21 @@
 import Categories from '../Categories/Categories'
 
-export default function PopularCategory({ categories }) {
+interface Category {
+  id: number
+  name: string
+  slug: string
+  image: string
+  creationAt: string
+  updatedAt: string
+}
+
+interface PopularCategoryProps {
+  categories: Category[]
+}
+export default function PopularCategory({ categories }: PopularCategoryProps) {
   return (
     <section className="mb-16">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-2">
         <h2 className="text-3xl font-bold text-gray-900">
           Популярные категории
         </h2>
@@ -12,7 +24,7 @@ export default function PopularCategory({ categories }) {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
         <Categories categories={categories} />
       </div>
     </section>

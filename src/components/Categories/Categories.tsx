@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 interface Category {
   id: number
   name: string
@@ -8,6 +10,10 @@ interface Category {
 }
 
 export default function Categories({ categories }: { categories: Category[] }) {
+  const navigate = useNavigate()
+  const handleClick = (category: Category) => {
+    navigate(`/categories/${category.slug}`)
+  }
   if (!categories?.length) return null
 
   return (
@@ -17,6 +23,7 @@ export default function Categories({ categories }: { categories: Category[] }) {
           <div
             key={category.id}
             className="relative group overflow-hidden rounded-xl cursor-pointer h-48"
+            onClick={() => handleClick(category)}
           >
             {category.image ? (
               <img
@@ -33,8 +40,10 @@ export default function Categories({ categories }: { categories: Category[] }) {
             )}
 
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all" />
-            <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="font-semibold text-xl mb-1">{category.name}</h3>
+            <div className="absolute bottom-2 left-1 sm:bottom-4 sm:left-4 text-white">
+              <h3 className="font-semibold text-xl m-0 p-0 sm:mb-1">
+                {category.name}
+              </h3>
             </div>
           </div>
         ))}

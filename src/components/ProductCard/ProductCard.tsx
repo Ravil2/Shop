@@ -74,11 +74,11 @@ export default function ProductCard({ product }: { product: IProduct }) {
         <div className="flex items-center justify-between">
           <div>
             <span className="text-2xl font-bold text-gray-900">
-              {product.price.toLocaleString('ru-RU')} ₽
+              {product.price.toLocaleString('ru-RU')} $
             </span>
             {product.oldPrice && (
               <span className="text-sm text-gray-500 line-through ml-2">
-                {product.oldPrice.toLocaleString('ru-RU')} ₽
+                {product.oldPrice.toLocaleString('ru-RU')} $
               </span>
             )}
           </div>

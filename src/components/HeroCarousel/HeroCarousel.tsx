@@ -58,7 +58,7 @@ export const HeroCarousel = () => {
             style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="absolute inset-0 bg-black/50 "></div>
-            <div className="relative z-10 text-white max-w-2xl ml-16">
+            <div className="relative z-10 text-white max-w-2xl ml-10 sm:ml-16">
               <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
               <p className="text-xl mb-6">{slide.subtitle}</p>
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 cursor-pointer py-3 rounded-lg font-semibold transition-colors">
@@ -71,13 +71,13 @@ export const HeroCarousel = () => {
 
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/50 bg-opacity-80 p-1 sm:p-2 rounded-full hover:bg-opacity-100 transition-all"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-6 h-6 " />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/50 bg-opacity-80 p-1 sm:p-2 rounded-full hover:bg-opacity-100 transition-all"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
