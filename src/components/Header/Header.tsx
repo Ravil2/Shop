@@ -4,7 +4,12 @@ import HeaderBurger from '../HeaderBurger/HeaderBurget'
 const Header = () => {
   const location = useLocation()
 
-  const isActive = (path: string) => location.pathname === path
+  const isActive = (path: string) => {
+    if (path === '/categories') {
+      return location.pathname.startsWith('/categories')
+    }
+    return location.pathname === path
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 shadow-sm">
