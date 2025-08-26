@@ -10,6 +10,7 @@ export default function CategoriesPage() {
   const products = useAppSelector(getProducts)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<string | null>(null)
+  const [visibleCount, setVisibleCount] = useState<number>(10)
 
   useEffect(() => {
     dispatch(loadProducts())
@@ -41,7 +42,7 @@ export default function CategoriesPage() {
           setSortBy={setSortBy}
         />
 
-        <div className="">
+        <div>
           <div className="container mx-auto px-4 py-8">
             <div className="flex items-center justify-between mb-8">
               <div>
@@ -61,7 +62,7 @@ export default function CategoriesPage() {
 
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredProducts.map((prod) => (
+                {filteredProducts.slice(0, visibleCount).map((prod) => (
                   <ProductCard key={prod.id} product={prod} />
                 ))}
               </div>
@@ -76,6 +77,16 @@ export default function CategoriesPage() {
                 <p className="text-gray-600">
                   Попробуйте выбрать другую категорию
                 </p>
+              </div>
+            )}
+            {filteredProducts.length > 0 && (
+              <div className="flex justify-center mt-10">
+                <button
+                  onClick={() => setVisibleCount((prev) => prev + 10)}
+                  className="bg-blue-600 px-6 py-2 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Загрузить еще
+                </button>
               </div>
             )}
           </div>

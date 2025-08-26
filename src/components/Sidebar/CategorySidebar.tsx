@@ -49,7 +49,7 @@ export function CategorySidebar({
   )
 
   return (
-    <Sidebar className="w-64 border-r bg-gray-50 py-15">
+    <Sidebar className="w-64 border-r bg-gray-50 py-15 z-10">
       <SidebarContent className="p-4 space-y-6">
         <SidebarGroup>
           <SidebarGroupLabel className="text-gray-700 text-sm font-semibold mb-2">

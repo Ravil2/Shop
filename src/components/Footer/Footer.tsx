@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-black text-white pt-16 pb-8">
+    <footer className="bg-gradient-to-br from-gray-900 to-black text-white pt-16 pb-8 relative z-20">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
@@ -56,7 +56,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Категории */}
           <div>
             <h3 className="text-lg font-semibold mb-6 relative inline-block">
               Категории
