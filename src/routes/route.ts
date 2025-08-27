@@ -5,6 +5,8 @@ import CartPage from '@/pages/CartPage'
 import PrivacyPage from '@/pages/PrivacyPage'
 import TermsPage from '@/pages/TermsPage'
 import CategoryDetailPage from '@/pages/CategoryDetailPage'
+import RegisterPage from '@/pages/RegisterPage'
+import LoginPage from '@/pages/LoginPage'
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -15,4 +17,6 @@ export const routes = [
   { path: '/cart', component: CartPage },
   { path: '/privacy', component: PrivacyPage },
   { path: '/terms', component: TermsPage },
+  { path: '/login', component: LoginPage },
+  { path: '/register', component: RegisterPage },
 ] as const

@@ -5,7 +5,7 @@ const slides = [
   {
     title: 'Новая коллекция техники',
     subtitle: 'Скидки до 30% на все гаджеты',
-    image: 'https://i.imgur.com/IvxMPFr.jpeg',
+    image: 'https://i.imgur.com/0qQBkxX.jpg',
     buttonText: 'Смотреть сейчас',
   },
   {
@@ -17,7 +17,7 @@ const slides = [
   {
     title: 'Распродажа сезона',
     subtitle: 'Только до конца месяца',
-    image: 'https://i.imgur.com/T8oq9X2.jpeg',
+    image: 'https://i.imgur.com/IvxMPFr.jpeg',
     buttonText: 'Купить со скидкой',
   },
 ]
