@@ -18,5 +18,5 @@ export const routes = [
   { path: '/privacy', component: PrivacyPage },
   { path: '/terms', component: TermsPage },
   { path: '/login', component: LoginPage },
-  { path: '/register', component: RegisterPage },
+  { path: '/registration', component: RegisterPage },
 ] as const

@@ -6,7 +6,7 @@ import { routes } from './routes/route'
 export default function App() {
   const location = useLocation()
 
-  const noLayoutRoutes = ['/register', '/login', '/reset-password']
+  const noLayoutRoutes = ['/registration', '/login', '/reset-password']
 
   const showLayout = !noLayoutRoutes.includes(location.pathname)
 
