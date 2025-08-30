@@ -15,11 +15,12 @@ export default function Categories({ categories }: { categories: Category[] }) {
     navigate(`/categories/${category.slug}`)
   }
   if (!categories?.length) return null
+  const limitedCategories = categories.slice(0, 8)
 
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-        {categories.map((category) => (
+        {limitedCategories.map((category) => (
           <div
             key={category.id}
             className="relative group overflow-hidden rounded-xl cursor-pointer h-48"

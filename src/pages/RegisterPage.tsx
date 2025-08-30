@@ -4,10 +4,13 @@ import { PasswordField } from '../components/form/PasswordField'
 import { SocialButtons } from '../components/Social/SocialButton'
 import { AuthWrapper } from '../components/Layout/AuthWrapper'
 import { useRegisterForm } from '@/hooks/useRegisterForm'
+import { useAuthForm } from '@/hooks/useAuthForm'
+import { useAuthRedirect } from '@/hooks/useAuthRedirect'
 
 export default function RegisterPage() {
   const { register, handleSubmit, errors, onSubmit, watch } = useRegisterForm()
-
+  useAuthRedirect('auth', '/home')
+  useAuthForm()
   return (
     <AuthWrapper imgSrc="/registerHand.png">
       <div className="flex items-center gap-2">

@@ -77,6 +77,22 @@ class AuthController {
     }
   }
 
+  async profile(req: Request, res: Response) {
+    try {
+      const userId = (req as any).user.id
+
+      const user = await User.findById(userId).select('-password')
+      if (!user) {
+        return res.status(404).json({ message: 'Пользователь не найден' })
+      }
+
+      res.json(user)
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: 'Ошибка при получении профиля' })
+    }
+  }
+
   async getUsers(req: Request, res: Response) {
     try {
       const users = await User.find().select('-password')

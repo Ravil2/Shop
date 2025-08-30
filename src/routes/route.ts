@@ -8,7 +8,7 @@ import CategoryDetailPage from '@/pages/CategoryDetailPage'
 import RegisterPage from '@/pages/RegisterPage'
 import LoginPage from '@/pages/LoginPage'
 
-export const routes = [
+export const privateRoutes = [
   { path: '/', component: HomePage },
   { path: '/home', component: HomePage },
   { path: '/categories', component: CategoriesPage },
@@ -17,6 +17,9 @@ export const routes = [
   { path: '/cart', component: CartPage },
   { path: '/privacy', component: PrivacyPage },
   { path: '/terms', component: TermsPage },
+] as const
+
+export const publicRoutes = [
   { path: '/login', component: LoginPage },
   { path: '/registration', component: RegisterPage },
-] as const
+]

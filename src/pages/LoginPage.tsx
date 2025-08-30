@@ -4,8 +4,10 @@ import { PasswordField } from '../components/form/PasswordField'
 import { SocialButtons } from '../components/Social/SocialButton'
 import { AuthWrapper } from '../components/Layout/AuthWrapper'
 import { useAuthForm } from '@/hooks/useAuthForm'
+import { useAuthRedirect } from '@/hooks/useAuthRedirect'
 
 export default function LoginPage() {
+  useAuthRedirect('auth', '/home')
   const { register, handleSubmit, errors, serverError, onSubmit } =
     useAuthForm()
 

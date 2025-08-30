@@ -28,4 +28,6 @@ router.get(
   authControllers.getUsers,
 )
 
+router.get('/profile', authMiddleware, authControllers.profile)
+
 export default router

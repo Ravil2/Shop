@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Heart, ShoppingCart, Star } from 'lucide-react'
 
 interface IProduct {
@@ -25,7 +26,20 @@ interface IProduct {
 }
 
 export default function ProductCard({ product }: { product: IProduct }) {
-  const mainImage = product.images?.[0] || '/api/placeholder/300/300'
+  const [isValidImage, setIsValidImage] = useState(false)
+
+  const mainImage = product.images?.find((img) => img && img.trim() !== '')
+
+  useEffect(() => {
+    if (!mainImage) return
+
+    const img = new Image()
+    img.onload = () => setIsValidImage(true)
+    img.onerror = () => setIsValidImage(false)
+    img.src = mainImage
+  }, [mainImage])
+
+  if (!mainImage || !isValidImage) return null
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -35,9 +49,11 @@ export default function ProductCard({ product }: { product: IProduct }) {
           alt={product.title}
           className="w-full h-48 object-cover"
         />
+
         <button className="absolute top-3 right-3 p-2 bg-white rounded-full hover:bg-red-100 transition-colors">
           <Heart className="w-4 h-4" />
         </button>
+
         {product.oldPrice && (
           <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded text-sm">
             -{Math.round((1 - product.price / product.oldPrice) * 100)}%
