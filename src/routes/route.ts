@@ -13,10 +13,11 @@ export const privateRoutes = [
   { path: '/home', component: HomePage },
   { path: '/categories', component: CategoriesPage },
   { path: '/categories/:slug', component: CategoryDetailPage },
-  { path: '/profile/:id', component: ProfilePage },
+  { path: '/profile', component: ProfilePage },
   { path: '/cart', component: CartPage },
   { path: '/privacy', component: PrivacyPage },
   { path: '/terms', component: TermsPage },
+  { path: '/cart/:id', component: CartPage },
 ] as const
 
 export const publicRoutes = [

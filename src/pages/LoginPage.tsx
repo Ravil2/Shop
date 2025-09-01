@@ -63,7 +63,7 @@ export default function LoginPage() {
       <p className="text-sm text-gray-500">
         У вас нет учетной записи?{' '}
         <Link to="/registration" className="text-blue-600">
-          Sign up
+          Зарегестрироваться
         </Link>
       </p>
 

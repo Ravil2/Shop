@@ -1,35 +1,6 @@
 import { createSlice, type Dispatch } from '@reduxjs/toolkit'
 import type { RootState } from './store'
-
-interface Category {
-  id: number
-  name: string
-  slug: string
-  image: string
-  creationAt: string
-  updatedAt: string
-}
-
-interface Product {
-  id: number
-  title: string
-  slug: string
-  price: number
-  description: string
-  category: Category
-  images: string[]
-  creationAt: string
-  updatedAt: string
-}
-
-interface ProductsState {
-  products: Product[]
-  loading: boolean
-  error: string | null
-  selectedProduct: Product | null
-  categories: Category[]
-  lastFetch: string | null
-}
+import type { Category, ProductsState } from '@/types/types'
 
 const initialState: ProductsState = {
   products: [],
@@ -111,7 +82,7 @@ export const loadCategories = () => async (dispatch: Dispatch) => {
       throw new Error('Не удалось загрузить категории')
     }
     const data = await response.json()
-    const categoriFiltered = data.filter((categ: any) => {
+    const categoriFiltered = data.filter((categ: Category) => {
       const invalidNames = ['string', 'category_B', 'product']
       const isOnlyNumbers = /^\d+$/.test(categ.name)
 

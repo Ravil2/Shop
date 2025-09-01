@@ -1,38 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Heart, ShoppingCart, Star } from 'lucide-react'
-
-interface IProduct {
-  id: number
-  title: string
-  slug: string
-  price: number
-  description: string
-  category: {
-    id: number
-    name: string
-    slug?: string
-    image?: string
-    creationAt?: string
-    updatedAt?: string
-  }
-  images: string[]
-  creationAt: string
-  updatedAt: string
-  rating?: {
-    rate: number
-    count: number
-  }
-  oldPrice?: number
-}
+import type { IProduct } from '@/types/types'
+import { useNavigate } from 'react-router-dom'
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const [isValidImage, setIsValidImage] = useState(false)
-
   const mainImage = product.images?.find((img) => img && img.trim() !== '')
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!mainImage) return
-
     const img = new Image()
     img.onload = () => setIsValidImage(true)
     img.onerror = () => setIsValidImage(false)
@@ -41,8 +18,15 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
   if (!mainImage || !isValidImage) return null
 
+  const openCartPage = () => {
+    navigate(`/cart/${product.id}`)
+  }
+
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div
+      onClick={openCartPage}
+      className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+    >
       <div className="relative">
         <img
           src={mainImage}

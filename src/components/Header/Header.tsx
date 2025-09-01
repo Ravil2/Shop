@@ -53,15 +53,15 @@ const Header = () => {
           </Link>
 
           <Link
-            to="/profile/me"
+            to="/profile"
             className={`relative px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
-              isActive('/profile/me')
+              isActive('/profile')
                 ? 'text-blue-600 bg-blue-50 shadow-sm'
                 : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
             }`}
           >
             Профиль
-            {isActive('/profile/me') && (
+            {isActive('/profile') && (
               <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>
             )}
           </Link>
