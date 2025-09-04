@@ -1,33 +1,65 @@
-import type { IProduct } from '@/types/types'
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-interface ICartProducts {
-  cartProducts: IProduct[]
+interface ICartItem {
+  productId: string
+  quantity: number
+}
+
+interface ICartState {
+  cartProducts: ICartItem[]
   cartCounter: number
 }
 
-const initialState: ICartProducts = {
+const initialState: ICartState = {
   cartProducts: [],
-  cartCounter: 1,
+  cartCounter: 0,
 }
 
 export const cartSlice = createSlice({
   name: 'cartProducts',
   initialState,
   reducers: {
-    addToCart: (state, action) => {
-      state.cartProducts.push(action.payload)
-      state.cartCounter = state.cartProducts.length
+    addToCart: (state, action: PayloadAction<string>) => {
+      const productId = action.payload
+      const existingItem = state.cartProducts.find(
+        (item) => item.productId === productId,
+      )
+
+      if (existingItem) {
+        existingItem.quantity += 1
+      } else {
+        state.cartProducts.push({ productId, quantity: 1 })
+      }
+
+      state.cartCounter = state.cartProducts.reduce(
+        (acc, item) => acc + item.quantity,
+        0,
+      )
     },
     removeFromCart: (state, action) => {
-      state.cartProducts = state.cartProducts.filter(
-        (product) => product.id !== action.payload,
+      const productId = action.payload
+      const existingItem = state.cartProducts.find(
+        (item) => item.productId === productId,
       )
-      state.cartCounter = state.cartProducts.length
+
+      if (existingItem) {
+        if (existingItem.quantity > 1) {
+          existingItem.quantity -= 1
+        } else {
+          state.cartProducts = state.cartProducts.filter(
+            (item) => item.productId !== productId,
+          )
+        }
+      }
+
+      state.cartCounter = state.cartProducts.reduce(
+        (acc, item) => acc + item.quantity,
+        0,
+      )
     },
     clearCart: (state) => {
       state.cartProducts = []
-      state.cartCounter = state.cartProducts.length
+      state.cartCounter = 0
     },
   },
 })
