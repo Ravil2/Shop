@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import HeaderBurger from '../HeaderBurger/HeaderBurget'
+import { useAppSelector } from '@/hooks/hooks'
+import { Badge } from '@/components/ui/badge'
 
 const Header = () => {
   const location = useLocation()
@@ -10,6 +12,8 @@ const Header = () => {
     }
     return location.pathname === path
   }
+
+  const cartCounter = useAppSelector((state) => state.cart.cartCounter)
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 shadow-sm">
@@ -67,11 +71,11 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 relative">
           <Link to="/cart">
             <button className="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-xl transition-all duration-300">
               <svg
-                className="w-5 h-5"
+                className="w-5 h-5 "
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -83,6 +87,15 @@ const Header = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6h9m-7.5 0a2 2 0 100 4 2 2 0 000-4zm9 0a2 2 0 100 4 2 2 0 000-4z"
                 />
               </svg>
+
+              {cartCounter > 0 && (
+                <Badge
+                  className="absolute top-0 right-1 rounded-full px-1.5 py-0 text-[10px] font-bold"
+                  variant="destructive"
+                >
+                  {cartCounter}
+                </Badge>
+              )}
             </button>
           </Link>
 

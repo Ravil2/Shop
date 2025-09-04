@@ -18,13 +18,13 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
   if (!mainImage || !isValidImage) return null
 
-  const openCartPage = () => {
-    navigate(`/cart/${product.id}`)
+  const openProductPage = () => {
+    navigate(`/product/${product.id}`)
   }
 
   return (
     <div
-      onClick={openCartPage}
+      onClick={openProductPage}
       className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
     >
       <div className="relative">

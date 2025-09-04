@@ -1,12 +1,13 @@
 import HomePage from '@/pages/HomePage'
 import CategoriesPage from '@/pages/CategoriesPage'
 import ProfilePage from '@/pages/ProfilePage'
-import CartPage from '@/pages/CartPage'
 import PrivacyPage from '@/pages/PrivacyPage'
 import TermsPage from '@/pages/TermsPage'
 import CategoryDetailPage from '@/pages/CategoryDetailPage'
 import RegisterPage from '@/pages/RegisterPage'
 import LoginPage from '@/pages/LoginPage'
+import ProductPage from '@/pages/ProductPage'
+import CartPage from '@/pages/CartPage'
 
 export const privateRoutes = [
   { path: '/', component: HomePage },
@@ -17,7 +18,7 @@ export const privateRoutes = [
   { path: '/cart', component: CartPage },
   { path: '/privacy', component: PrivacyPage },
   { path: '/terms', component: TermsPage },
-  { path: '/cart/:id', component: CartPage },
+  { path: '/product/:id', component: ProductPage },
 ] as const
 
 export const publicRoutes = [
