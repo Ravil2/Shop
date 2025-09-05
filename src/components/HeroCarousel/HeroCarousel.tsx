@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const slides = [
   {
-    title: 'Новая коллекция техники',
-    subtitle: 'Скидки до 30% на все гаджеты',
+    title: 'Новая коллекция товаров',
+    subtitle: 'Самые популярные товары только у нас',
     image: 'https://i.imgur.com/0qQBkxX.jpg',
     buttonText: 'Смотреть сейчас',
   },
   {
     title: 'Бесплатная доставка',
-    subtitle: 'При заказе от 5000 рублей',
+    subtitle: 'При заказе от 50$ долларов',
     image: 'https://i.imgur.com/J6MinJn.jpeg',
     buttonText: 'Подробнее',
   },
   {
-    title: 'Распродажа сезона',
+    title: 'Распродажа товаров',
     subtitle: 'Только до конца месяца',
     image: 'https://i.imgur.com/IvxMPFr.jpeg',
     buttonText: 'Купить со скидкой',
@@ -61,9 +62,9 @@ export const HeroCarousel = () => {
             <div className="relative z-10 text-white max-w-2xl ml-10 sm:ml-16">
               <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
               <p className="text-xl mb-6">{slide.subtitle}</p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 cursor-pointer py-3 rounded-lg font-semibold transition-colors">
+              <Link to='/categories' className="bg-blue-600 hover:bg-blue-700 text-white px-8 cursor-pointer py-3 rounded-lg font-semibold transition-colors">
                 {slide.buttonText}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

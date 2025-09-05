@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Categories from '../Categories/Categories'
 
 interface Category {
@@ -19,9 +20,12 @@ export default function PopularCategory({ categories }: PopularCategoryProps) {
         <h2 className="text-3xl font-bold text-gray-900">
           Популярные категории
         </h2>
-        <button className="text-blue-600 hover:text-blue-700 font-semibold">
+        <Link
+          to="/categories"
+          className="text-blue-600 hover:text-blue-700 font-semibold"
+        >
           Смотреть все →
-        </button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
